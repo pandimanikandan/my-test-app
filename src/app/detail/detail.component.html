@@ -1,0 +1,48 @@
+<div class="content-wrapper">
+    <div class="head_title">
+    <div (click)="close()" class="back-arrow"></div>  Detail
+    </div>
+    <div class="content" *ngIf="movieDetail">
+        <div class="img-wrapper">
+            <img [src]="movieDetail.Poster" class="img" alt="...">
+            <div class="title-wrapper">
+                <div class="title txt">
+                    {{movieDetail.Title}}
+                </div>
+                <div class="year txt">{{movieDetail.Year}}</div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4 txt-tit">Genre</div>
+                <div class="col-xs-4 txt-tit">Running Time</div>
+                <div class="col-xs-4 txt-tit">IMDB Rating</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 txt-con">{{movieDetail.Genre}}</div>
+                <div class="col-xs-4 txt-con">{{movieDetail.Runtime}}</div>
+                <div class="col-xs-4 txt-con">{{movieDetail.imdbRating}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 txt-tit">Plot</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 txt-con">{{movieDetail.Plot}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 txt-tit">Actors</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 txt-con">{{movieDetail.Actors}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 txt-tit">Writers</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 txt-con">{{movieDetail.Writer}}</div>
+            </div>
+        </div>
+        
+    </div>     
+    <h3 class="nofound" *ngIf="!movieDetail"> Loading ...</h3>  
+</div>

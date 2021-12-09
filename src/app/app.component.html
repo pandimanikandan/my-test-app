@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="header">
+        <div class="head_title">
+            IMDB
+        </div>       
+        <div class="search-wrapper">
+            <input type="search" class="input-search" placeholder="Search..." [formControl]="searchControl">
+            
+                <select class="custom-select" [formControl]="selectControl">
+                    <i class="bi bi-caret-down-fill"></i>
+                    <option value="all" selected>All</option>
+                    <option value="movie">Movie</option>
+                    <option value="series">Series</option>
+                    <option value="episode">Episode</option>
+                </select>
+           
+        </div>
+    </div>
+    <div id="infinity_scroll" class="search-results row"
+        infinite-scroll
+        [infiniteScrollDistance]="scrollDistance"
+        [infiniteScrollThrottle]="throttle"
+        [scrollWindow]="false"
+        (scrolled)="onScrollDown()">
+        <div *ngFor="let movie of movies$" (click)="openDetail(movie)" class="card col-md-6 col-sm-12">
+            <div class="image-wrapper">
+                <img [src]="movie.Poster" class="card-img-top img" alt="...">
+            </div>
+            <div class="card-body">
+            <p class="card-title line-clamp">{{ movie.Title }}</p>
+            </div>
+        </div>
+        <h3 class="nofound" *ngIf="!movies$.length && notFound"> No Result Found</h3>
+    </div>
+</div>
+<div *ngIf="modalOpen" class="detail-wrapper">
+    <app-detail *ngIf="modalOpen" [movieDetail]="movieDetail" (onClose)="toggleModal()"></app-detail>
+</div>
+<div [id]="splash" class="loader-screen splash">
+    <div>IMDB</div>
+</div>
+
